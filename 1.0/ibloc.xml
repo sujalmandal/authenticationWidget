@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ibloc xmlns="http://www.irise.com/schema/ibloc" type="widget" namespace="freeSpirit" name="loginAction" version="1.0" productVersion="8.8">
+  <displayName>Login Action</displayName>
+  <description>This is a widget which has a login logic added to it, using datasheets put in your credentials and then click on the "Login" button to get a "onLoginSuccess" or "onLoginFail" events</description>
+  <canvasImage scale="scaleToFit">resources/images/preview.png</canvasImage>
+  <iconImage>resources/images/lock.png</iconImage>
+  <defaultWidth>400</defaultWidth>
+  <defaultHeight>180</defaultHeight>
+  <!--<intrinsicProperty>username</intrinsicProperty>-->
+  <metadata>
+  <createdBy>Sujal Mandal</createdBy>
+  <supportedBrowsers>Internet Explorer v7.0+, Firefox v3.5+, Safari v4+, Chrome v8+</supportedBrowsers>
+  <connectionRequired>false</connectionRequired>
+  <supportNumber>+91-8904711202</supportNumber>
+  <supportUrl></supportUrl>
+  <releaseDate>2015-09-11</releaseDate>
+  </metadata>
+
+  <properties>
+
+  	<property name="useCustomHtml">
+	  	<displayName>Use custom Html?</displayName>
+	  	<description>
+        Check this box to use custom html to render the authentication widget, remember to use "username" as the name of the input type which gets the input username and use "password" for the input type which gets the password from the user, use a single button for the Login button
+      </description>
+	  	<editor name="checkBox"/>
+  	</property>
+
+    <property name="customHtml">
+        <displayName>Custom Html</displayName>
+        <description>Write your own html with username input type id as 'username' , password input type as 'password' and login button id as 'loginButton', ignore if not using "Custom Html".</description>
+        <editor name="textArea" />
+        <defaultValue>
+          <string>
+            <![CDATA[ Username : <input type='text' id='username'/><br>Password : <input type='password' id='password'><br><input type='button' id='loginButton' value='Login'/> ]]>
+        </string>
+      </defaultValue>
+    </property>
+
+  	<property name="buttonLabel">
+  		<displayName>Button label</displayName>
+	  	<description>Name to display in the submit label, ignore if using custom html.</description>
+  		<editor name="textInput" />
+      <defaultValue><string>Login</string></defaultValue>
+	</property>
+
+  <property name="validUsernames">
+          <displayName>Valid Username List</displayName>
+          <description>Set of valid usernames</description>
+        <editor name="textInput" multiValue="true"/>
+    <defaultValue>
+          <string>user1</string>
+          <string>user2</string>
+    </defaultValue>
+  </property>
+
+  <property name="validPasswords">
+          <displayName>Valid Password List</displayName>
+          <description>Set of valid passwords</description>
+        <editor name="textInput" multiValue="true"/>
+    <defaultValue>
+          <string>pass1</string>
+          <string>pass2</string>
+    </defaultValue>
+  </property>
+
+  <property name="InputUsername">
+      <displayName>InputUsername</displayName>
+      <description>Use this field to make the username persistent</description>
+      <editor name="textInput" multiValue="false"/>
+  </property>
+
+  <property name="InputPassword">
+      <displayName>InputPassword</displayName>
+      <description>Use this field to make the password persistent</description>
+      <editor name="textInput" multiValue="false"/>
+  </property>
+
+  </properties>
+
+  <events>
+    <event name="onLoginSuccess">
+      <displayName>onLoginSuccess</displayName>
+      <description>Event fired on successful login.</description>
+    </event>
+
+    <event name="onLoginFail">
+      <displayName>onLoginFail</displayName>
+      <description>Event fired on failed login.</description>
+    </event>
+
+    <event name="onEmptyUsernameOrPassword">
+      <displayName>onEmptyUsernameOrPassword</displayName>
+      <description>Event fired on failed login.</description>
+    </event>
+
+  </events>
+
+  <preload>
+    <scripts>
+      <script src="/iblocs/freeSpirit/loginAction/1.0/javascript/authenticationWidget.js"/>
+    </scripts>
+  </preload>
+
+</ibloc>
